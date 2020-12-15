@@ -1,4 +1,4 @@
-class UserLibBooksController < ApplicationController
+class Api::V1::UserLibBooksController < ApplicationController
     def create
         user_lib_book = UserLibBook.find_or_create_by(user_lib_book_params)
         render json: user_lib_book

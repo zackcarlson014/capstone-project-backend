@@ -1,4 +1,4 @@
-class UserWishBooksController < ApplicationController
+class Api::V1::UserWishBooksController < ApplicationController
     def create
         user_wish_book = UserWishBook.find_or_create_by(user_wish_book_params)
         render json: user_wish_book

@@ -1,4 +1,4 @@
 class UserWishBook < ApplicationRecord
-    belongs_to :donatee, :class_name => :User
-    belongs_to :wish_list, :class_name => :Book
+    belongs_to :book
+    belongs_to :user
 end

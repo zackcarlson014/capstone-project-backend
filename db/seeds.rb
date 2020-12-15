@@ -1,20 +1,13 @@
-require 'rest-client'
-require 'json'
-require 'pry'
+user1 = User.create(username: 'Zack', password: 'Blink182')
+user2 = User.create(username: 'Sanja', password: 'Queen4')
+user3 = User.create(username: 'Sam', password: 'Blade1')
 
-# api_json = RestClient.get("https://www.googleapis.com/books/v1/volumes?q=search-terms&key=AIzaSyAH1ef5StuZkUbTo1IqpjjpGT6LBeyz-UM")
+book1 = Book.create(title: 'First Book', author: 'asdfsadlkf')
+book2 = Book.create(title: 'Second Book', author: 'asdfsadlkf')
+book3 = Book.create(title: 'Third Book', author: 'asdfs')
+book4 = Book.create(title: 'Fourth Book', author: 'asserfs')
 
-
-# results = JSON.parse(api_json)["results"]
-
-
-# results.each do |app|
-#     data = []
-#     object = {
-#         "title": app["title"],
-#         "image_src": app["image"],
-#         "rating": rand(25..200)
-#     }
-#     data << object
-#     Appetizer.create!(data)
-# end
+lib_book_1 = UserLibBook.create(user_id: 1, book_id: 1)
+lib_book_2 = UserLibBook.create(user_id: 1, book_id: 2)
+lib_book_3 = UserLibBook.create(user_id: 1, book_id: 3)
+lib_book_4 = UserLibBook.create(user_id: 1, book_id: 4)

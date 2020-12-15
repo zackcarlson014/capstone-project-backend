@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_142236) do
+ActiveRecord::Schema.define(version: 2020_12_15_193252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,36 +24,27 @@ ActiveRecord::Schema.define(version: 2020_12_15_142236) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "goals", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "category"
-    t.integer "progress"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "user_lib_books", force: :cascade do |t|
-    t.integer "library_book_id"
-    t.integer "donor_id"
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_wish_books", force: :cascade do |t|
-    t.integer "donatee_id"
-    t.integer "wish_list_book_id"
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
     t.text "bio"
     t.string "prof_pic_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end
