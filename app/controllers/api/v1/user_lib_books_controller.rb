@@ -13,7 +13,7 @@ class Api::V1::UserLibBooksController < ApplicationController
     private
 
     def user_lib_book_params
-        params.require(:user_lib_book).permit(:library_book_id, :donor_id)
+        params.require(:user_lib_book).permit(:user_id, :book_id)
     end
 end
 
