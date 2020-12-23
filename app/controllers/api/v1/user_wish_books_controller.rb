@@ -1,4 +1,16 @@
 class Api::V1::UserWishBooksController < ApplicationController
+
+    def index
+        user_wish_books = UserWishBook.all
+        books = UserWishBook.all_books
+        render json: {user_wish_books: user_wish_books, books: books}
+    end
+
+    def show
+        user_wish_book = UserWishBook.find(user_wish_book_params)
+        render json: user_wish_book
+    end
+
     def create
         user_wish_book = UserWishBook.find_or_create_by(user_wish_book_params)
         render json: user_wish_book

@@ -7,7 +7,7 @@ class Api::V1::BooksController < ApplicationController
 
     def show
         book = Book.find(book_params)
-        render json: book
+        render json: book 
     end
 
     def create
@@ -24,6 +24,6 @@ class Api::V1::BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :published_date, :image)
+        params.require(:book).permit(:title, :author, :published_date, :image, :description)
     end
 end
