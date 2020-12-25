@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
 
+    wrap_parameters :user, include: [:username, :password, :bio, :prof_pic_url]
+
     def index
         users = User.all
         render json: users
@@ -10,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        user = User.find_or_create_by(user_params)
+        user = User.create!(user_params)
         render json: user
     end
 

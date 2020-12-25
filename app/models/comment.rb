@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
     has_many :comment_likes
 
     def self.all_comments
-        all.map { |comment| [comment, comment.user]}
+        all.map { |comment| [comment, comment.user, comment.comment_likes.length]}
     end
 end
 
