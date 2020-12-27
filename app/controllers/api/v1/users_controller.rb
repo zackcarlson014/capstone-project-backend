@@ -16,10 +16,21 @@ class Api::V1::UsersController < ApplicationController
         render json: user
     end
 
+    def edit
+        user = User.find(params[:id])
+        render json: user
+    end
+
+    def update
+        user = User.find(params[:id])
+        user.update!(user_params)
+        render json: user, except: [:password_digest, :created_at, :updated_at]
+    end
+
     def destroy
         user = User.find(params[:id])
         user.destroy
-        render json: user
+        render json: user, except: [:password_digest, :created_at, :updated_at]
     end
     
     private
