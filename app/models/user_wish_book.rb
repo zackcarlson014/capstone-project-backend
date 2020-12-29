@@ -5,6 +5,6 @@ class UserWishBook < ApplicationRecord
     validates :user_id, uniqueness: {scope: :book_id}
 
     def self.all_books
-        all.map { |uwb| [uwb.book, uwb.user, uwb.id]}
+        all.map { |uwb| [uwb.book, {id: uwb.user.id, username: uwb.user.username, bio: uwb.user.bio, prof_pic_url: uwb.user.prof_pic_url}, uwb.id]}
     end
 end

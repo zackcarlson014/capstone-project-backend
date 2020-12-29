@@ -1,0 +1,2 @@
+class ReservedBook < ApplicationRecord
+end
