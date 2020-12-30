@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
     has_many :reserved_books
 
+    has_many :reserved_messages
+
     has_many :comments
 
     has_many :comment_likes
