@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
         user = User.find(params[:id])
         render json: user
     end
-y
+
     def update
         user = User.find(params[:id])
         user.update!(user_params)

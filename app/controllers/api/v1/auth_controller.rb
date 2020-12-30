@@ -9,7 +9,8 @@ class Api::V1::AuthController < ApplicationController
           lib_books = UserLibBook.all_books
           wish_books = UserWishBook.all_books
           comments = Comment.all_comments
-          render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, comments: comments, token: token}
+          reserved_books = ReservedBook.all
+          render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, comments: comments, reserved_books: reserved_books, token: token}
       else
         render json: { error: 'Invalid username/password.' }, status: 401
       end
@@ -23,6 +24,7 @@ class Api::V1::AuthController < ApplicationController
       lib_books = UserLibBook.all_books
       wish_books = UserWishBook.all_books
       comments = Comment.all_comments
-      render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, comments: comments}
+      reserved_books = ReservedBook.all
+      render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, comments: comments, reserved_books: reserved_books}
     end
 end

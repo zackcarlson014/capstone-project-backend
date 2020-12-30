@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   
   
-  resources :reserved_books
+  
   namespace :api do
     namespace :v1 do
+      resources :reserved_books
       resources :comment_likes
       resources :comments
       resources :user_wish_books
