@@ -15,6 +15,17 @@ class Api::V1::ReservedBooksController < ApplicationController
         render json: reserved_book
     end
 
+    def edit
+        reserved_book = ReservedBook.find(params[:id])
+        render json: reserved_book
+    end
+
+    def update
+        reserved_book = ReservedBook.find(params[:id])
+        reserved_book.update!(reserved_books_params)
+        render json: reserved_book, except: [:created_at, :updated_at]
+    end
+
     def destroy
         reserved_book = ReservedBook.find(params[:id])
         reserved_book.destroy

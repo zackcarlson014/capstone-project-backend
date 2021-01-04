@@ -11,7 +11,7 @@ class Api::V1::ReservedMessagesController < ApplicationController
     end
 
     def create
-        reserved_message = ReservedMessage.find_or_create_by(reserved_message_params)
+        reserved_message = ReservedMessage.find_or_create_by(reserved_messages_params)
         render json: reserved_message
     end
 
