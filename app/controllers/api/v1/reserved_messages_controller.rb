@@ -1,7 +1,7 @@
 class Api::V1::ReservedMessagesController < ApplicationController
 
     def index
-        reserved_messages = ReservedMessage.all
+        reserved_messages = ReservedMessage.all_messages
         render json: reserved_messages
     end
 

@@ -7,6 +7,6 @@ class UserLibBook < ApplicationRecord
     validates :user_id, uniqueness: {scope: :book_id}
 
     def self.all_books
-        all.map { |ulb| [ulb.book, {id: ulb.user.id, username: ulb.user.username, bio: ulb.user.bio, prof_pic_url: ulb.user.prof_pic_url}, ulb.id]}
+        all.map { |ulb| [{id: ulb.book.id, title: ulb.book.title, image: ulb.book.image, author: ulb.book.author, description: ulb.book.description}, {id: ulb.user.id, username: ulb.user.username, bio: ulb.user.bio, prof_pic_url: ulb.user.prof_pic_url}, ulb.id]}
     end
 end

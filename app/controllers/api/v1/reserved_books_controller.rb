@@ -2,12 +2,12 @@ class Api::V1::ReservedBooksController < ApplicationController
 
     def index
         reserved_books = ReservedBook.all 
-        render json: reserved_books
+        render json: reserved_books, except: [:created_at, :updated_at]
     end
 
     def show
         reserved_book = ReservedBook.find(reserved_books_params)
-        render json: reserved_book
+        render json: reserved_book, except: [:created_at, :updated_at]
     end
 
     def create

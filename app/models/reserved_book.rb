@@ -4,4 +4,7 @@ class ReservedBook < ApplicationRecord
 
     has_many :reserved_messages
     
+    def self.all_reserved_books
+        all.map { |book| {id: book.id, user_id: book.user_id, user_lib_book_id: book.user_lib_book_id, delivered: book.delivered}}
+    end
 end
