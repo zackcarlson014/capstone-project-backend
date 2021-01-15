@@ -6,8 +6,11 @@ class Api::V1::ReservedBooksController < ApplicationController
     end
 
     def show
-        reserved_book = ReservedBook.find(reserved_books_params)
-        render json: reserved_book, except: [:created_at, :updated_at]
+        reserved_book = ReservedBook.find(params[:id])
+        reserved_show = reserved_book.reserved_show
+        reserved_messages = ReservedMessage.all_messages
+        messages = reserved_messages.select { |m| m[0][:reserved_book_id] === reserved_book.id} 
+        render json: {book: reserved_show, messages: messages}
     end
 
     def create

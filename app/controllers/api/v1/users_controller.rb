@@ -8,7 +8,8 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def show
-        user = User.find(user_params)
+        user = User.find(params[:id])
+        render json: user, except: [:password_digest, :updated_at]
     end
 
     def create

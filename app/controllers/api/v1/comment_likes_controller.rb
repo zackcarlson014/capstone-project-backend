@@ -5,6 +5,12 @@ class Api::V1::CommentLikesController < ApplicationController
         render json: comment_like
     end
 
+    def destroy
+        comment_like = CommentLike.find(params[:id])
+        comment_like.destroy
+        render json: comment_like
+    end
+
     private
 
     def comment_likes_params

@@ -8,9 +8,10 @@ class Api::V1::AuthController < ApplicationController
           token = JWT.encode(payload, 'my_secret', 'HS256')
           lib_books = UserLibBook.all_books
           wish_books = UserWishBook.all_books
-          comments = Comment.all_comments
           reserved_books = ReservedBook.all_reserved_books
-          render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, reserved_books: reserved_books, token: token}
+          likes = CommentLike.all.map { |l| l.user_id === user.id}
+          my_likes = likes.map { |l| l.my_like} 
+          render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, reserved_books: reserved_books, my_likes: my_likes, token: token}
       else
         render json: { error: 'Invalid username/password.' }, status: 401
       end
@@ -23,8 +24,9 @@ class Api::V1::AuthController < ApplicationController
       user = User.find(user_id)
       lib_books = UserLibBook.all_books
       wish_books = UserWishBook.all_books
-      comments = Comment.all_comments
       reserved_books = ReservedBook.all
-      render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, reserved_books: reserved_books}
+      likes = CommentLike.all.select { |l| l.user_id === user.id}
+      my_likes = likes.map { |l| l.my_like}
+      render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, reserved_books: reserved_books,  my_likes: my_likes}
     end
 end
