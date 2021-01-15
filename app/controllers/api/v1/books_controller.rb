@@ -6,8 +6,9 @@ class Api::V1::BooksController < ApplicationController
     end
 
     def show
-        book = Book.find(book_params)
-        render json: book 
+        book = Book.find(params[:id])
+        comments = Comment.all_comments
+        render json: {book: {id: book.id, title: book.title, author: book.author, image: book.image, description: book.description}, comments: comments}
     end
 
     def create
