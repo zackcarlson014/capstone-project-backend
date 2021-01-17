@@ -9,7 +9,7 @@ class Api::V1::AuthController < ApplicationController
           lib_books = UserLibBook.all_books
           wish_books = UserWishBook.all_books
           reserved_books = ReservedBook.all_reserved_books
-          likes = CommentLike.all.map { |l| l.user_id === user.id}
+          likes = CommentLike.all.select { |l| l.user_id === user.id}
           my_likes = likes.map { |l| l.my_like} 
           render json: {user: {id: user.id, username: user.username, bio: user.bio, prof_pic_url: user.prof_pic_url}, all_lib_books: lib_books, all_wish_books: wish_books, reserved_books: reserved_books, my_likes: my_likes, token: token}
       else
