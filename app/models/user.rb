@@ -15,5 +15,7 @@ class User < ApplicationRecord
     has_many :comments
 
     has_many :comment_likes
+    
+    has_many :messages
 
 end
