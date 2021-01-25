@@ -18,4 +18,6 @@ class User < ApplicationRecord
     
     has_many :messages
 
+    has_many :lib_book_history_items
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_200303) do
+ActiveRecord::Schema.define(version: 2021_01_23_220930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 2020_12_30_200303) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lib_book_history_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "user_lib_book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipient_id"
+    t.integer "res_book"
+    t.boolean "seen"
+    t.boolean "read"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reserved_books", force: :cascade do |t|
     t.integer "user_id"
     t.integer "user_lib_book_id"
@@ -61,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_200303) do
     t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "original_user_id"
   end
 
   create_table "user_wish_books", force: :cascade do |t|
@@ -77,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_200303) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "location"
   end
 
 end

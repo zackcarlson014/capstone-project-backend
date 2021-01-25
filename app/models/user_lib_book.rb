@@ -4,10 +4,17 @@ class UserLibBook < ApplicationRecord
 
     has_one :reserved_book
 
+    has_many :lib_book_history_items
+
     validates :user_id, uniqueness: {scope: :book_id}
 
+    def history_items
+        items = self.lib_book_history_items.map { |h| [h.user_id, h.created_at]}
+        return items.sort { |a, b| a[1] <=> b[1]}
+    end
+
     def reserved_show
-        return {id: self.id, user: {id: self.user.id, username: self.user.username, prof_pic_url: self.user.prof_pic_url}}
+        return {id: self.id, user: {id: self.user.id, username: self.user.username, prof_pic_url: self.user.prof_pic_url}, history: self.history_items}
     end
 
     def self.all_books
