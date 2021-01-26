@@ -10,11 +10,14 @@ class Api::V1::ReservedBooksController < ApplicationController
         reserved_show = reserved_book.reserved_show
         reserved_messages = ReservedMessage.all_messages
         messages = reserved_messages.select { |m| m[0][:reserved_book_id] === reserved_book.id} 
-        render json: {book: reserved_show, messages: messages}
+        render json: {
+            reserved_book: reserved_show, 
+            messages: messages
+        }
     end
 
     def create
-        reserved_book = ReservedBook.find_or_create_by(reserved_books_params)
+        reserved_book = ReservedBook.find_or_create_by(reserved_book_params)
         render json: reserved_book
     end
 
@@ -25,7 +28,7 @@ class Api::V1::ReservedBooksController < ApplicationController
 
     def update
         reserved_book = ReservedBook.find(params[:id])
-        reserved_book.update!(reserved_books_params)
+        reserved_book.update!(reserved_book_params)
         render json: reserved_book, except: [:created_at, :updated_at]
     end
 
@@ -37,7 +40,7 @@ class Api::V1::ReservedBooksController < ApplicationController
 
     private
 
-    def reserved_books_params
+    def reserved_book_params
         params.require(:reserved_book).permit(:user_id, :user_lib_book_id, :delivered)
     end
 

@@ -24,7 +24,8 @@ class Api::V1::UserLibBooksController < ApplicationController
     def update
         user_lib_book = UserLibBook.find(params[:id])
         user_lib_book.update!(user_lib_book_params)
-        render json: user_lib_book
+        updated_lib_book = user_lib_book.updated_view
+        render json: updated_lib_book
     end
 
     def destroy

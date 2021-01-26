@@ -6,12 +6,12 @@ class Api::V1::ReservedMessagesController < ApplicationController
     end
 
     def show
-        reserved_message = ReservedMessage.find(reserved_messages_params)
+        reserved_message = ReservedMessage.find(reserved_message_params)
         render json: reserved_message
     end
 
     def create
-        reserved_message = ReservedMessage.find_or_create_by(reserved_messages_params)
+        reserved_message = ReservedMessage.find_or_create_by(reserved_message_params)
         render json: reserved_message
     end
 
@@ -23,7 +23,7 @@ class Api::V1::ReservedMessagesController < ApplicationController
 
     private
 
-    def reserved_messages_params
+    def reserved_message_params
         params.require(:reserved_message).permit(:user_id, :reserved_book_id, :content)
     end
 
