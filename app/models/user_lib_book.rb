@@ -34,8 +34,8 @@ class UserLibBook < ApplicationRecord
                 author: self.book.author, 
                 description: self.book.description, 
                 averageRating: self.average_rating, 
-                ratingCount: self.rating_count, 
-                previewLink: self.previewLink
+                ratingCount: self.ratings_count, 
+                previewLink: self.preview_link
             }, 
             {
                 id: self.user.id, 
@@ -57,8 +57,8 @@ class UserLibBook < ApplicationRecord
                 author: ulb.book.author, 
                 description: ulb.book.description, 
                 averageRating: ulb.book.average_rating, 
-                ratingCount: ulb.book.rating_count, 
-                previewLink: ulb.book.previewLink
+                ratingCount: ulb.book.ratings_count, 
+                previewLink: ulb.book.preview_link
             }, 
             {
                 id: ulb.user.id, 

@@ -12,9 +12,9 @@ class UserWishBook < ApplicationRecord
                 image: uwb.book.image, 
                 author: uwb.book.author, 
                 description: uwb.book.description,
-                averageRating: ulb.book.average_rating, 
-                ratingCount: ulb.book.rating_count, 
-                previewLink: ulb.book.previewLink
+                averageRating: uwb.book.average_rating, 
+                ratingCount: uwb.book.ratings_count, 
+                previewLink: uwb.book.preview_link
             }, 
             {
                 id: uwb.user.id, 
