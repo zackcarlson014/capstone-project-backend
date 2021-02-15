@@ -8,7 +8,7 @@ class Book < ApplicationRecord
 
     has_many :comments
 
-    validates :title, uniqueness: {scope: :author}
+    validates :title, uniqueness: {scope: :preview_link}
 
 
 end
