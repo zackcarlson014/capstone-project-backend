@@ -58,7 +58,8 @@ class UserLibBook < ApplicationRecord
                 description: ulb.book.description, 
                 averageRating: ulb.book.average_rating, 
                 ratingCount: ulb.book.ratings_count, 
-                previewLink: ulb.book.preview_link
+                previewLink: ulb.book.preview_link,
+                googleID: ulb.book.google_id
             }, 
             {
                 id: ulb.user.id, 

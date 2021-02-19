@@ -17,7 +17,8 @@ class Api::V1::BooksController < ApplicationController
                 description: book.description, 
                 averageRating: book.average_rating, 
                 ratingCount: book.ratings_count, 
-                previewLink: book.preview_link
+                previewLink: book.preview_link,
+                googleID: book.google_id
             }, 
             comments: comments
         }
@@ -37,6 +38,6 @@ class Api::V1::BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:id, :title, :author, :published_date, :image, :description, :average_rating, :ratings_count, :preview_link)
+        params.require(:book).permit(:id, :title, :author, :published_date, :image, :description, :average_rating, :ratings_count, :preview_link, :google_id)
     end
 end

@@ -8,7 +8,6 @@ class Book < ApplicationRecord
 
     has_many :comments
 
-    validates :title, uniqueness: {scope: :preview_link}
-
+    validates :title, uniqueness: {scope: :google_id}
 
 end

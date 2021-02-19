@@ -14,7 +14,8 @@ class UserWishBook < ApplicationRecord
                 description: uwb.book.description,
                 averageRating: uwb.book.average_rating, 
                 ratingCount: uwb.book.ratings_count, 
-                previewLink: uwb.book.preview_link
+                previewLink: uwb.book.preview_link,
+                googleID: uwb.book.google_id
             }, 
             {
                 id: uwb.user.id, 
