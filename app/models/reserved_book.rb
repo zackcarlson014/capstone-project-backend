@@ -28,7 +28,9 @@ class ReservedBook < ApplicationRecord
     def self.all_reserved_books
         all.map { |book| 
             {
-                id: book.id, 
+                id: book.id,
+                user_id: book.user_id,
+                user_lib_book_id: book.user_lib_book_id,
                 delivered: book.delivered
             }
         }

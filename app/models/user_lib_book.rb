@@ -33,9 +33,10 @@ class UserLibBook < ApplicationRecord
                 image: self.book.image, 
                 author: self.book.author, 
                 description: self.book.description, 
-                averageRating: self.average_rating, 
-                ratingCount: self.ratings_count, 
-                previewLink: self.preview_link
+                averageRating: self.book.average_rating, 
+                ratingCount: self.book.ratings_count, 
+                previewLink: self.book.preview_link,
+                googleID: self.book.google_id
             }, 
             {
                 id: self.user.id, 
