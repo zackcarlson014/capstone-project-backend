@@ -18,6 +18,6 @@ class Api::V1::LibBookHistoryItemsController < ApplicationController
     private
 
     def history_item_params
-        params.require(:lib_book_history_item).permit(:user_id, :user_lib_book_id)
+        params.require(:lib_book_history_item).permit(:user_id, :user_lib_book_id, :res_book)
     end
 end

@@ -31,7 +31,8 @@ class ReservedBook < ApplicationRecord
                 id: book.id,
                 user_id: book.user_id,
                 user_lib_book_id: book.user_lib_book_id,
-                delivered: book.delivered
+                delivered: book.delivered,
+                completed: book.completed
             }
         }
     end

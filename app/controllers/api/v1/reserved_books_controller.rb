@@ -32,16 +32,10 @@ class Api::V1::ReservedBooksController < ApplicationController
         render json: reserved_book, except: [:created_at, :updated_at]
     end
 
-    def destroy
-        reserved_book = ReservedBook.find(params[:id])
-        reserved_book.destroy
-        render json: reserved_book
-    end
-
     private
 
     def reserved_book_params
-        params.require(:reserved_book).permit(:user_id, :user_lib_book_id, :delivered)
+        params.require(:reserved_book).permit(:user_id, :user_lib_book_id, :delivered, :completed)
     end
 
 end

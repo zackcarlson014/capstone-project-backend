@@ -9,6 +9,7 @@ class Api::V1::AuthController < ApplicationController
             lib_books = UserLibBook.all_books
             wish_books = UserWishBook.all_books
             reserved_books = ReservedBook.all_reserved_books
+            messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id}
             likes = CommentLike.all.select { |l| l.user_id === user.id}
             my_likes = likes.map { |l| l.my_like} 
             render json: {
@@ -20,7 +21,8 @@ class Api::V1::AuthController < ApplicationController
               }, 
               all_lib_books: lib_books, 
               all_wish_books: wish_books, 
-              reserved_books: reserved_books, 
+              reserved_books: reserved_books,
+              messages: messages, 
               my_likes: my_likes, 
               token: token
             }
@@ -34,10 +36,10 @@ class Api::V1::AuthController < ApplicationController
         decoded_token = JWT.decode(token, 'my_secret' , true, { algorithm: 'HS256' })
         user_id = decoded_token[0]['user_id']
         user = User.find(user_id)
-    
         lib_books = UserLibBook.all_books
         wish_books = UserWishBook.all_books
         reserved_books = ReservedBook.all
+        messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id}
         likes = CommentLike.all.select { |l| l.user_id === user.id}
         my_likes = likes.map { |l| l.my_like}
         render json: {
@@ -49,7 +51,8 @@ class Api::V1::AuthController < ApplicationController
           }, 
             all_lib_books: lib_books, 
             all_wish_books: wish_books, 
-            reserved_books: reserved_books,  
+            reserved_books: reserved_books,
+            messages: messages,   
             my_likes: my_likes
         }
     end
