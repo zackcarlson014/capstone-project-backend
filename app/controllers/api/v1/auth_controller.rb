@@ -9,9 +9,10 @@ class Api::V1::AuthController < ApplicationController
             lib_books = UserLibBook.all_books
             wish_books = UserWishBook.all_books
             reserved_books = ReservedBook.all_reserved_books
-            messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id}
-            likes = CommentLike.all.select { |l| l.user_id === user.id}
-            my_likes = likes.map { |l| l.my_like} 
+            messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id }
+            friends = Friend.all.select { |f| f.invitee_id === user.id || f.inviter_id === user.id }
+            likes = CommentLike.all.select { |l| l.user_id === user.id }
+            my_likes = likes.map { |l| l.my_like } 
             render json: {
               user: {
                 id: user.id, 
@@ -22,7 +23,8 @@ class Api::V1::AuthController < ApplicationController
               all_lib_books: lib_books, 
               all_wish_books: wish_books, 
               reserved_books: reserved_books,
-              messages: messages, 
+              messages: messages,
+              friends: friends, 
               my_likes: my_likes, 
               token: token
             }
@@ -39,9 +41,10 @@ class Api::V1::AuthController < ApplicationController
         lib_books = UserLibBook.all_books
         wish_books = UserWishBook.all_books
         reserved_books = ReservedBook.all
-        messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id}
-        likes = CommentLike.all.select { |l| l.user_id === user.id}
-        my_likes = likes.map { |l| l.my_like}
+        messages = Message.all.select { |m| m.user_id === user.id || m.recipient_id === user.id }
+        friends = Friend.all.select { |f| f.invitee_id === user.id || f.inviter_id === user.id }
+        likes = CommentLike.all.select { |l| l.user_id === user.id }
+        my_likes = likes.map { |l| l.my_like }
         render json: {
           user: {
             id: user.id, 
@@ -52,7 +55,8 @@ class Api::V1::AuthController < ApplicationController
             all_lib_books: lib_books, 
             all_wish_books: wish_books, 
             reserved_books: reserved_books,
-            messages: messages,   
+            messages: messages, 
+            friends: friends,   
             my_likes: my_likes
         }
     end
