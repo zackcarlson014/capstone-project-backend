@@ -25,7 +25,7 @@ class Api::V1::UserWishBooksController < ApplicationController
     private
 
     def user_wish_book_params
-        params.require(:user_wish_book).permit(:book_id, :user_id)
+        params.require(:user_wish_book).permit(:id, :book_id, :user_id)
     end
 end
 
