@@ -1,7 +1,6 @@
 class Api::V1::CommentsController < ApplicationController
 
     def index
-
         all_comments = Comment.all_comments
         render json: all_comments
     end

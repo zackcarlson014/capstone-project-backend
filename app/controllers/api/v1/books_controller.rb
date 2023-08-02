@@ -34,7 +34,7 @@ class Api::V1::BooksController < ApplicationController
         book.destroy
         render json: book
     end
-    
+
     private
 
     def book_params

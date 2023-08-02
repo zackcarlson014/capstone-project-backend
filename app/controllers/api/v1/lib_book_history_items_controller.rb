@@ -14,7 +14,6 @@ class Api::V1::LibBookHistoryItemsController < ApplicationController
         render json: history_item
     end
 
-    
     private
 
     def history_item_params
